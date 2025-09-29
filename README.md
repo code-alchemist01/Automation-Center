@@ -59,6 +59,30 @@ Sistem Otomasyon Merkezi, Windows işletim sistemleri için geliştirilmiş kaps
 - PDF dışa aktarma desteği (wkhtmltopdf ile)
 - Özelleştirilebilir rapor şablonları
 
+<img width="778" height="637" alt="Ekran görüntüsü 2025-09-29 235821" src="https://github.com/user-attachments/assets/9d9e6bf5-ef57-4f6e-a3b5-fc1b237334da" />
+<img width="860" height="771" alt="Ekran görüntüsü 2025-09-30 002226" src="https://github.com/user-attachments/assets/0a4a9fd6-9a23-4007-b50f-e17050a02599" />
+<img width="1023" height="809" alt="Ekran görüntüsü 2025-09-30 002150" src="https://github.com/user-attachments/assets/2f141e05-d8c1-4b61-a844-cf531b59fdcb" />
+<img width="806" height="779" alt="Ekran görüntüsü 2025-09-30 002130" src="https://github.com/user-attachments/assets/90333d37-2e5d-4be3-938b-71df5f10b2d3" />
+<img width="826" height="627" alt="Ekran görüntüsü 2025-09-29 222439" src="https://github.com/user-attachments/assets/97addc82-2c28-4e45-8c20-0c5d69850ede" />
+<img width="901" height="614" alt="Ekran görüntüsü 2025-09-29 222421" src="https://github.com/user-attachments/assets/66400ff3-58e8-4404-8c81-3ff99450b44d" />
+<img width="790" height="713" alt="Ekran görüntüsü 2025-09-29 222415" src="https://github.com/user-attachments/assets/58d5643d-25a1-4a3c-a29b-bf02136a4a7d" />
+<img width="713" height="749" alt="Ekran görüntüsü 2025-09-29 222407" src="https://github.com/user-attachments/assets/4c55131d-1d0c-4e71-b8a2-e33850a2afea" />
+<img width="677" height="677" alt="Ekran görüntüsü 2025-09-29 222352" src="https://github.com/user-attachments/assets/cdd56e59-36e4-4f62-8d15-03126661910f" />
+<img width="827" height="650" alt="Ekran görüntüsü 2025-09-29 222317" src="https://github.com/user-attachments/assets/cebc8c87-147d-45e8-9632-4180c3b11a14" />
+<img width="939" height="489" alt="Ekran görüntüsü 2025-09-29 222259" src="https://github.com/user-attachments/assets/813821f4-71b2-4d50-aaa4-37858534bcfd" />
+<img width="809" height="487" alt="Ekran görüntüsü 2025-09-29 222241" src="https://github.com/user-attachments/assets/c1f8513f-7f99-4441-9d2c-d569b07311c4" />
+<img width="776" height="506" alt="Ekran görüntüsü 2025-09-29 222214" src="https://github.com/user-attachments/assets/6592c179-7aa7-41b0-8160-2f11e52cb556" />
+<img width="707" height="519" alt="Ekran görüntüsü 2025-09-29 221822" src="https://github.com/user-attachments/assets/79d0fe86-b4dc-4417-8800-7787888dc284" />
+<img width="825" height="658" alt="Ekran görüntüsü 2025-09-29 221628" src="https://github.com/user-attachments/assets/d9481cbd-4d77-4d02-b7bb-2ffe673e9465" />
+<img width="712" height="597" alt="Ekran görüntüsü 2025-09-29 221610" src="https://github.com/user-attachments/assets/dec2bb5a-7bfb-490b-a955-dee8ae367a2b" />
+<img width="697" height="587" alt="Ekran görüntüsü 2025-09-29 221514" src="https://github.com/user-attachments/assets/c2fc863d-3910-4cbe-a5bb-7723e4ce042a" />
+<img width="774" height="550" alt="Ekran görüntüsü 2025-09-29 221456" src="https://github.com/user-attachments/assets/a38408b9-fc3a-4222-8039-d37ffe41d96e" />
+<img width="966" height="810" alt="Ekran görüntüsü 2025-09-29 221443" src="https://github.com/user-attachments/assets/18769c90-3911-41dc-91d4-0b3a44c59cee" />
+<img width="818" height="609" alt="Ekran görüntüsü 2025-09-30 002436" src="https://github.com/user-attachments/assets/2091fbc0-882a-4699-a61f-fcdd756c5288" />
+<img width="1156" height="796" alt="Ekran görüntüsü 2025-09-30 002307" src="https://github.com/user-attachments/assets/b86430a8-0a74-4987-90cb-a6bdf312052d" />
+
+
+
 ## 🛠️ Kurulum
 
 ### Gereksinimler
