@@ -35,6 +35,7 @@
 #include "../include/modules.h"
 #include "../include/system_settings.h"
 #include "../include/reports.h"
+#include "../include/database.h"
 
 // Ana menü fonksiyonu
 void show_main_menu() {
@@ -54,10 +55,11 @@ void show_main_menu() {
     printf("║  [7] Görev Zamanlayıcı                                      ║\n");
     printf("║  [8] Sistem Ayarları ve Konfigürasyon                       ║\n");
     printf("║  [9] Raporları Görüntüle                                    ║\n");
+    printf("║  [10] Veritabanı Görüntüleyici                              ║\n");
     printf("║  [0] Çıkış                                                  ║\n");
     printf("║                                                              ║\n");
     printf("╚══════════════════════════════════════════════════════════════╝\n");
-    printf("\nSeçiminizi yapın (0-9): ");
+    printf("\nSeçiminizi yapın (0-10): ");
 }
 
 // Ana program
@@ -91,6 +93,12 @@ int main() {
     // Konfigürasyonu yükle
     if (load_config() == 0) {
         printf("HATA: Konfigürasyon yüklenemedi!\n");
+        return 1;
+    }
+    
+    // Veritabanını başlat
+    if (init_database() == 0) {
+        printf("HATA: Veritabanı başlatılamadı!\n");
         return 1;
     }
     
@@ -140,14 +148,19 @@ int main() {
                     run_reports();
                     break;
                     
+                case 10:
+                    run_database_viewer();
+                    break;
+                    
                 case 0:
                     printf("\nSistem kapatılıyor...\n");
                     log_info("Sistem Otomasyon Merkezi kapatıldı");
+                    close_database();
                     cleanup_logger();
                     return 0;
                     
                 default:
-                    printf("\nGeçersiz seçim! Lütfen 0-9 arası bir sayı girin.\n");
+                    printf("\nGeçersiz seçim! Lütfen 0-10 arası bir sayı girin.\n");
                     log_warning("Geçersiz menü seçimi: %d", choice);
                     break;
             }

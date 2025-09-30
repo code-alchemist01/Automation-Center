@@ -25,6 +25,7 @@
 
 #include "../../include/logger.h"
 #include "../../include/modules.h"
+#include "../../include/database.h"
 
 // Güvenlik seviyesi enum'u
 typedef enum {
@@ -288,6 +289,31 @@ void system_vulnerability_scan() {
     #endif
     
     log_info("Sistem güvenlik açığı tarama tamamlandı");
+    
+    // Veritabanına kaydet
+    SecurityScan scan = {0};
+    strcpy(scan.scan_type, "VULNERABILITY_SCAN");
+    strcpy(scan.target, "localhost");
+    scan.threats_found = total_vulnerabilities;
+    if (critical_count > 0) {
+        strcpy(scan.severity, "CRITICAL");
+    } else if (medium_count > 0) {
+        strcpy(scan.severity, "MEDIUM");
+    } else if (low_count > 0) {
+        strcpy(scan.severity, "LOW");
+    } else {
+        strcpy(scan.severity, "NONE");
+    }
+    snprintf(scan.description, sizeof(scan.description), 
+             "Sistem güvenlik taraması: %d kontrol, %d açık, skor: %d/100", 
+             total_checks, total_vulnerabilities, security_score);
+    scan.timestamp = time(NULL);
+    
+    if (insert_security_scan(&scan)) {
+        printf("✅ Güvenlik tarama sonuçları veritabanına kaydedildi\n");
+    } else {
+        printf("❌ Güvenlik tarama sonuçları veritabanına kaydedilemedi\n");
+    }
 }
 
 void malware_scan() {
@@ -356,6 +382,27 @@ void malware_scan() {
         printf("• Düzenli olarak tam sistem tarama yapın\n");
         printf("• Şüpheli e-mail eklerini açmayın\n");
         printf("• Güvenilir kaynaklardan yazılım indirin\n");
+        
+        // Veritabanına kaydet
+        SecurityScan scan = {0};
+        strcpy(scan.scan_type, "MALWARE_SCAN");
+        strcpy(scan.target, "filesystem");
+        scan.threats_found = threats_found;
+        if (threats_found > 0) {
+            strcpy(scan.severity, "HIGH");
+        } else {
+            strcpy(scan.severity, "NONE");
+        }
+        snprintf(scan.description, sizeof(scan.description), 
+                 "Kötü amaçlı yazılım taraması: %d dosya tarandı, %d tehdit bulundu", 
+                 files_scanned, threats_found);
+        scan.timestamp = time(NULL);
+        
+        if (insert_security_scan(&scan)) {
+            printf("✅ Malware tarama sonuçları veritabanına kaydedildi\n");
+        } else {
+            printf("❌ Malware tarama sonuçları veritabanına kaydedilemedi\n");
+        }
     }
     
     log_info("Kötü amaçlı yazılım tarama tamamlandı");
@@ -624,6 +671,22 @@ void user_account_audit() {
     printf("• Düzenli olarak hesap aktivitelerini gözden geçirin\n");
     
     log_info("Kullanıcı hesapları denetimi gerçek verilerle tamamlandı");
+    
+    // Veritabanına kaydet
+    SecurityScan scan = {0};
+    strcpy(scan.scan_type, "USER_AUDIT");
+    strcpy(scan.target, "user_accounts");
+    scan.threats_found = 0; // Kullanıcı denetimi için tehdit sayısı yok
+    strcpy(scan.severity, "INFO");
+    snprintf(scan.description, sizeof(scan.description), 
+             "Kullanıcı hesapları güvenlik denetimi tamamlandı");
+    scan.timestamp = time(NULL);
+    
+    if (insert_security_scan(&scan)) {
+        printf("✅ Kullanıcı denetimi sonuçları veritabanına kaydedildi\n");
+    } else {
+        printf("❌ Kullanıcı denetimi sonuçları veritabanına kaydedilemedi\n");
+    }
 }
 
 void file_integrity_check() {

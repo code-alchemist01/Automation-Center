@@ -20,6 +20,7 @@
 #endif
 
 #include "../../include/logger.h"
+#include "../../include/database.h"
 
 void show_file_management_menu() {
     printf("\n╔══════════════════════════════════════════════════════════════╗\n");
@@ -130,6 +131,20 @@ void file_search() {
 #endif
     
     log_info("Dosya arama işlemi tamamlandı: %s -> %s", search_path, search_pattern);
+    
+    // Veritabanına kaydet
+    FileOperation operation = {0};
+    strcpy(operation.operation, "SEARCH");
+    snprintf(operation.file_path, sizeof(operation.file_path), "%s\\%s", search_path, search_pattern);
+    operation.file_size = totalSize;
+    strcpy(operation.status, "SUCCESS");
+    operation.timestamp = time(NULL);
+    
+    if (insert_file_operation(&operation)) {
+        printf("✅ Arama işlemi veritabanına kaydedildi\n");
+    } else {
+        printf("❌ Arama işlemi veritabanına kaydedilemedi\n");
+    }
 }
 
 void bulk_rename() {
@@ -267,6 +282,20 @@ void bulk_rename() {
     }
     
     log_info("Toplu dosya yeniden adlandırma işlemi tamamlandı");
+    
+    // Veritabanına kaydet
+    FileOperation operation = {0};
+    strcpy(operation.operation, "BULK_RENAME");
+    strcpy(operation.file_path, directory);
+    operation.file_size = renamed_count;
+    strcpy(operation.status, renamed_count > 0 ? "SUCCESS" : "NO_FILES");
+    operation.timestamp = time(NULL);
+    
+    if (insert_file_operation(&operation)) {
+        printf("✅ Yeniden adlandırma işlemi veritabanına kaydedildi\n");
+    } else {
+        printf("❌ Yeniden adlandırma işlemi veritabanına kaydedilemedi\n");
+    }
 }
 
 void analyze_file_sizes() {
@@ -354,6 +383,20 @@ void analyze_file_sizes() {
     #endif
     
     log_info("Dosya boyutu analizi tamamlandı");
+    
+    // Veritabanına kaydet
+    FileOperation operation = {0};
+    strcpy(operation.operation, "SIZE_ANALYSIS");
+    GetCurrentDirectory(sizeof(operation.file_path), operation.file_path);
+    operation.file_size = (long)totalSize.QuadPart;
+    strcpy(operation.status, "SUCCESS");
+    operation.timestamp = time(NULL);
+    
+    if (insert_file_operation(&operation)) {
+        printf("✅ Boyut analizi işlemi veritabanına kaydedildi\n");
+    } else {
+        printf("❌ Boyut analizi işlemi veritabanına kaydedilemedi\n");
+    }
 }
 
 void clean_empty_folders() {
@@ -445,6 +488,20 @@ void clean_empty_folders() {
 #endif
     
     log_info("Boş klasör temizleme işlemi tamamlandı - %d klasör silindi", deletedCount);
+    
+    // Veritabanına kaydet
+    FileOperation operation = {0};
+    strcpy(operation.operation, "CLEAN_EMPTY");
+    strcpy(operation.file_path, searchPath);
+    operation.file_size = deletedCount;
+    strcpy(operation.status, deletedCount > 0 ? "SUCCESS" : "NO_FOLDERS");
+    operation.timestamp = time(NULL);
+    
+    if (insert_file_operation(&operation)) {
+        printf("✅ Klasör temizleme işlemi veritabanına kaydedildi\n");
+    } else {
+        printf("❌ Klasör temizleme işlemi veritabanına kaydedilemedi\n");
+    }
 }
 
 void organize_by_type() {
@@ -552,6 +609,20 @@ void organize_by_type() {
 #endif
     
     log_info("Dosya türü organizasyonu tamamlandı");
+    
+    // Veritabanına kaydet
+    FileOperation operation = {0};
+    strcpy(operation.operation, "ORGANIZE_TYPE");
+    strcpy(operation.file_path, searchPath);
+    operation.file_size = totalOrganized;
+    strcpy(operation.status, totalOrganized > 0 ? "SUCCESS" : "NO_FILES");
+    operation.timestamp = time(NULL);
+    
+    if (insert_file_operation(&operation)) {
+        printf("✅ Organizasyon işlemi veritabanına kaydedildi\n");
+    } else {
+        printf("❌ Organizasyon işlemi veritabanına kaydedilemedi\n");
+    }
 }
 
 void run_file_management() {

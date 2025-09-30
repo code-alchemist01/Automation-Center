@@ -27,6 +27,7 @@
 
 #include "../../include/logger.h"
 #include "../../include/modules.h"
+#include "../../include/database.h"
 
 // Ağ durumu yapısı
 typedef struct network_interface {
@@ -374,6 +375,20 @@ void ping_test() {
     }
     
     log_info("Ping testi tamamlandı: %s", target);
+    
+    // Veritabanına kaydet
+    NetworkMetrics metrics = {0};
+    strcpy(metrics.interface_name, "ping_test");
+    strcpy(metrics.target, target);
+    metrics.ping_time = (successful_pings > 0) ? (total_time / successful_pings) : -1;
+    metrics.connection_status = (successful_pings > 0);
+    metrics.timestamp = time(NULL);
+    
+    if (insert_network_metrics(&metrics)) {
+        printf("✅ Ping test sonuçları veritabanına kaydedildi\n");
+    } else {
+        printf("❌ Ping test sonuçları veritabanına kaydedilemedi\n");
+    }
 }
 
 void port_scan() {
@@ -428,6 +443,20 @@ void port_scan() {
     printf("• Kapalı port sayısı: %d\n", scanned_ports - open_ports);
     
     log_info("Port tarama tamamlandı: %s (%d-%d)", target, start_port, end_port);
+    
+    // Veritabanına kaydet
+    NetworkMetrics metrics = {0};
+    strcpy(metrics.interface_name, "port_scan");
+    strcpy(metrics.target, target);
+    metrics.ping_time = -1; // Port scan için ping time yok
+    metrics.connection_status = (open_ports > 0);
+    metrics.timestamp = time(NULL);
+    
+    if (insert_network_metrics(&metrics)) {
+        printf("✅ Port tarama sonuçları veritabanına kaydedildi\n");
+    } else {
+        printf("❌ Port tarama sonuçları veritabanına kaydedilemedi\n");
+    }
 }
 
 void bandwidth_monitor() {
@@ -585,6 +614,20 @@ void bandwidth_monitor() {
     #endif
     
     log_info("Bant genişliği izleme tamamlandı");
+    
+    // Veritabanına kaydet
+    NetworkMetrics metrics = {0};
+    strcpy(metrics.interface_name, "bandwidth_monitor");
+    strcpy(metrics.target, "local_interface");
+    metrics.ping_time = -1;
+    metrics.connection_status = true;
+    metrics.timestamp = time(NULL);
+    
+    if (insert_network_metrics(&metrics)) {
+        printf("✅ Bant genişliği verileri veritabanına kaydedildi\n");
+    } else {
+        printf("❌ Bant genişliği verileri veritabanına kaydedilemedi\n");
+    }
 }
 
 void network_diagnostics() {

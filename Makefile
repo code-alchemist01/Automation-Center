@@ -6,8 +6,8 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99 -O2
 DEBUG_FLAGS = -g -DDEBUG
-INCLUDES = -Iinclude -Ilib/cJSON -Ilib/pthread-win32
-LIBS = -lm -Llib/cJSON -lcjson
+INCLUDES = -Iinclude -Ilib/cJSON -Ilib/pthread-win32 -Ilib/sqlite
+LIBS = -lm -Llib/cJSON -lcjson lib/sqlite/sqlite3.c
 
 # Platform bağımlı ayarlar
 ifeq ($(OS),Windows_NT)

@@ -19,6 +19,7 @@
 
 #include "../../include/logger.h"
 #include "../../include/modules.h"
+#include "../../include/database.h"
 
 // Görev durumu enum'u
 typedef enum {
@@ -303,6 +304,29 @@ void create_new_task() {
     printf("📝 Görev Adı: %s\n", new_task.name);
     printf("⏰ Zamanlama: %s (%s)\n", new_task.schedule_time, get_repeat_string(new_task.repeat));
     printf("🎯 Öncelik: %s\n", get_priority_string(new_task.priority));
+    
+    // Database'e görev oluşturma kaydını ekle
+    ScheduledTask task_record;
+    strncpy(task_record.task_name, new_task.name, sizeof(task_record.task_name) - 1);
+    task_record.task_name[sizeof(task_record.task_name) - 1] = '\0';
+    
+    strncpy(task_record.command, new_task.command, sizeof(task_record.command) - 1);
+    task_record.command[sizeof(task_record.command) - 1] = '\0';
+    
+    strncpy(task_record.schedule, new_task.schedule_time, sizeof(task_record.schedule) - 1);
+    task_record.schedule[sizeof(task_record.schedule) - 1] = '\0';
+    
+    task_record.next_run = new_task.next_run;
+    task_record.last_run = new_task.last_run;
+    task_record.enabled = new_task.enabled;
+    strncpy(task_record.status, "CREATED", sizeof(task_record.status) - 1);
+    task_record.status[sizeof(task_record.status) - 1] = '\0';
+    
+    if (insert_scheduled_task(&task_record)) {
+        printf("📊 Görev database'e kaydedildi.\n");
+    } else {
+        printf("⚠️  Görev database'e kaydedilemedi.\n");
+    }
     
     log_info("Yeni görev oluşturuldu: %s", new_task.name);
 }
@@ -682,6 +706,29 @@ void run_task_now() {
                     break;
             }
             
+            // Database'e başarılı görev çalıştırma kaydını ekle
+            ScheduledTask task_record;
+            strncpy(task_record.task_name, task->name, sizeof(task_record.task_name) - 1);
+            task_record.task_name[sizeof(task_record.task_name) - 1] = '\0';
+            
+            strncpy(task_record.command, task->command, sizeof(task_record.command) - 1);
+            task_record.command[sizeof(task_record.command) - 1] = '\0';
+            
+            strncpy(task_record.schedule, "EXECUTED", sizeof(task_record.schedule) - 1);
+            task_record.schedule[sizeof(task_record.schedule) - 1] = '\0';
+            
+            task_record.next_run = task->next_run;
+            task_record.last_run = task->last_run;
+            task_record.enabled = task->enabled;
+            strncpy(task_record.status, "COMPLETED", sizeof(task_record.status) - 1);
+            task_record.status[sizeof(task_record.status) - 1] = '\0';
+            
+            if (insert_scheduled_task(&task_record)) {
+                printf("📊 Görev çalıştırma kaydı database'e eklendi.\n");
+            } else {
+                printf("⚠️  Görev çalıştırma kaydı database'e eklenemedi.\n");
+            }
+            
             log_info("Görev başarıyla çalıştırıldı: %s (exit code: %d)", task->name, exit_code);
         } else {
             task->status = TASK_FAILED;
@@ -694,6 +741,29 @@ void run_task_now() {
                 printf("💡 Komut çalıştırılamadı - sözdizimi hatası olabilir\n");
             } else {
                 printf("💡 Komut hata ile sonlandı - parametreleri kontrol edin\n");
+            }
+            
+            // Database'e başarısız görev çalıştırma kaydını ekle
+            ScheduledTask task_record;
+            strncpy(task_record.task_name, task->name, sizeof(task_record.task_name) - 1);
+            task_record.task_name[sizeof(task_record.task_name) - 1] = '\0';
+            
+            strncpy(task_record.command, task->command, sizeof(task_record.command) - 1);
+            task_record.command[sizeof(task_record.command) - 1] = '\0';
+            
+            strncpy(task_record.schedule, "EXECUTED", sizeof(task_record.schedule) - 1);
+            task_record.schedule[sizeof(task_record.schedule) - 1] = '\0';
+            
+            task_record.next_run = task->next_run;
+            task_record.last_run = task->last_run;
+            task_record.enabled = task->enabled;
+            strncpy(task_record.status, "FAILED", sizeof(task_record.status) - 1);
+            task_record.status[sizeof(task_record.status) - 1] = '\0';
+            
+            if (insert_scheduled_task(&task_record)) {
+                printf("📊 Görev hata kaydı database'e eklendi.\n");
+            } else {
+                printf("⚠️  Görev hata kaydı database'e eklenemedi.\n");
             }
             
             log_error("Görev çalıştırma hatası: %s (exit code: %d)", task->name, exit_code);

@@ -21,6 +21,7 @@
 #endif
 
 #include "../../include/logger.h"
+#include "../../include/database.h"
 
 void show_system_monitor_menu() {
     printf("\n╔══════════════════════════════════════════════════════════════╗\n");
@@ -84,6 +85,20 @@ void monitor_cpu() {
     
     printf("⏰ Sistem Çalışma Süresi: %d gün, %d saat, %d dakika\n", days, hours, minutes);
     
+    // Veritabanına kaydet
+    SystemMetrics metrics = {0};
+    metrics.cpu_usage = cpuUsage;
+    metrics.memory_usage = 0; // Şimdilik 0, memory fonksiyonunda doldurulacak
+    metrics.disk_usage = 0;
+    strcpy(metrics.hostname, "localhost");
+    metrics.timestamp = time(NULL);
+    
+    if (insert_system_metrics(&metrics)) {
+        printf("✅ CPU verileri veritabanına kaydedildi\n");
+    } else {
+        printf("❌ CPU verileri veritabanına kaydedilemedi\n");
+    }
+    
 #else
     printf("Bu özellik sadece Windows'ta desteklenmektedir.\n");
 #endif
@@ -138,6 +153,20 @@ void monitor_memory() {
         printf("\n⚠️  UYARI: Bellek kullanımı %%80'in üzerinde!\n");
     } else if(usagePercent > 60) {
         printf("\n⚡ BİLGİ: Bellek kullanımı yüksek (%%60+)\n");
+    }
+    
+    // Veritabanına kaydet
+    SystemMetrics metrics = {0};
+    metrics.cpu_usage = 0; // CPU verisi yok, sadece memory
+    metrics.memory_usage = usagePercent;
+    metrics.disk_usage = 0;
+    strcpy(metrics.hostname, "localhost");
+    metrics.timestamp = time(NULL);
+    
+    if (insert_system_metrics(&metrics)) {
+        printf("✅ Bellek verileri veritabanına kaydedildi\n");
+    } else {
+        printf("❌ Bellek verileri veritabanına kaydedilemedi\n");
     }
     
 #else
