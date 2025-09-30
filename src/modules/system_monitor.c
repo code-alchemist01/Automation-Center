@@ -23,6 +23,17 @@
 #include "../../include/logger.h"
 #include "../../include/database.h"
 
+// Module initialization
+bool init_system_monitor() {
+    log_info("System monitor module initialized");
+    return true;
+}
+
+// Module cleanup
+void cleanup_system_monitor() {
+    log_info("System monitor module cleaned up");
+}
+
 void show_system_monitor_menu() {
     printf("\n╔══════════════════════════════════════════════════════════════╗\n");
     printf("║                 SİSTEM İZLEME MODÜLÜ                        ║\n");

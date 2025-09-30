@@ -29,6 +29,17 @@
 #include "../../include/modules.h"
 #include "../../include/database.h"
 
+// Module initialization
+bool init_network_monitor() {
+    log_info("Network monitor module initialized");
+    return true;
+}
+
+// Module cleanup
+void cleanup_network_monitor() {
+    log_info("Network monitor module cleaned up");
+}
+
 // Ağ durumu yapısı
 typedef struct network_interface {
     char interface_name[64];

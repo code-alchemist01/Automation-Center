@@ -21,6 +21,17 @@
 #include "../../include/modules.h"
 #include "../../include/database.h"
 
+// Module initialization
+bool init_task_scheduler() {
+    log_info("Task scheduler module initialized");
+    return true;
+}
+
+// Module cleanup
+void cleanup_task_scheduler() {
+    log_info("Task scheduler module cleaned up");
+}
+
 // Görev durumu enum'u
 typedef enum {
     TASK_PENDING = 0,

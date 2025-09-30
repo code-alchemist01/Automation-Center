@@ -22,6 +22,17 @@
 #include "../../include/logger.h"
 #include "../../include/database.h"
 
+// Module initialization
+bool init_file_management() {
+    log_info("File management module initialized");
+    return true;
+}
+
+// Module cleanup
+void cleanup_file_management() {
+    log_info("File management module cleaned up");
+}
+
 void show_file_management_menu() {
     printf("\n╔══════════════════════════════════════════════════════════════╗\n");
     printf("║                    DOSYA YÖNETİMİ MODÜLÜ                    ║\n");

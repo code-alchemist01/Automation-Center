@@ -27,6 +27,17 @@
 #include "../../include/modules.h"
 #include "../../include/database.h"
 
+// Module initialization
+bool init_security_scanner() {
+    log_info("Security scanner module initialized");
+    return true;
+}
+
+// Module cleanup
+void cleanup_security_scanner() {
+    log_info("Security scanner module cleaned up");
+}
+
 // Güvenlik seviyesi enum'u
 typedef enum {
     SECURITY_LOW = 1,

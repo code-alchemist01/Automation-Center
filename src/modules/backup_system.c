@@ -24,6 +24,17 @@
 #include "../../include/logger.h"
 #include "../../include/modules.h"
 
+// Module initialization
+bool init_backup_system() {
+    log_info("Backup system module initialized");
+    return true;
+}
+
+// Module cleanup
+void cleanup_backup_system() {
+    log_info("Backup system module cleaned up");
+}
+
 // Yedekleme türleri
 typedef enum {
     BACKUP_FULL = 1,
