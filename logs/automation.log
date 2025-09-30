@@ -464,3 +464,31 @@
 [2025-09-30 04:07:42] INFO: Database özet raporu oluşturuldu
 [2025-09-30 04:07:46] INFO: Veritabanı istatistikleri görüntülendi
 [2025-09-30 04:07:50] INFO: Veri dışa aktarma menüsü görüntülendi
+[2025-09-30 04:27:22] INFO: Logger initialized successfully
+[2025-09-30 04:27:22] INFO: Database opened successfully: data/automation.db
+[2025-09-30 04:27:22] INFO: Database tables created successfully
+[2025-09-30 04:27:22] INFO: Database initialized successfully
+[2025-09-30 04:27:22] INFO: System monitor module initialized
+[2025-09-30 04:27:22] INFO: File management module initialized
+[2025-09-30 04:27:22] INFO: Network monitor module initialized
+[2025-09-30 04:27:22] INFO: Security scanner module initialized
+[2025-09-30 04:27:22] INFO: Task scheduler module initialized
+[2025-09-30 04:27:22] INFO: Backup system module initialized
+[2025-09-30 04:27:22] INFO: System startup completed successfully
+[2025-09-30 04:28:48] INFO: Logger initialized successfully
+[2025-09-30 04:28:48] INFO: Database opened successfully: data/automation.db
+[2025-09-30 04:28:48] INFO: Database tables created successfully
+[2025-09-30 04:28:48] INFO: Database initialized successfully
+[2025-09-30 04:28:48] INFO: System monitor module initialized
+[2025-09-30 04:28:48] INFO: File management module initialized
+[2025-09-30 04:28:48] INFO: Network monitor module initialized
+[2025-09-30 04:28:48] INFO: Security scanner module initialized
+[2025-09-30 04:28:48] INFO: Task scheduler module initialized
+[2025-09-30 04:28:48] INFO: Backup system module initialized
+[2025-09-30 04:28:48] INFO: System startup completed successfully
+[2025-09-30 04:28:55] INFO: Web server initialized on port 8080
+[2025-09-30 04:28:55] INFO: Web dashboard started on port 8080
+[2025-09-30 04:29:21] INFO: Database özet raporu oluşturuldu
+[2025-09-30 04:29:22] INFO: Veritabanı istatistikleri görüntülendi
+[2025-09-30 04:29:23] INFO: Veri dışa aktarma menüsü görüntülendi
+[2025-09-30 04:29:26] INFO: Eski veri temizleme işlemi: 30 gün
