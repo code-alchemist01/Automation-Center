@@ -492,3 +492,71 @@
 [2025-09-30 04:29:22] INFO: Veritabanı istatistikleri görüntülendi
 [2025-09-30 04:29:23] INFO: Veri dışa aktarma menüsü görüntülendi
 [2025-09-30 04:29:26] INFO: Eski veri temizleme işlemi: 30 gün
+[2025-09-30 04:31:44] INFO: Database Viewer modülü kapatıldı
+[2025-09-30 04:31:50] INFO: CPU kullanımı izleme işlemi tamamlandı
+[2025-09-30 04:31:58] INFO: Sistem metrikleri görüntülendi: 1 kayıt
+[2025-09-30 04:32:25] INFO: Veri dışa aktarma menüsü görüntülendi
+[2025-09-30 04:32:35] INFO: Veritabanı istatistikleri görüntülendi
+[2025-09-30 04:33:10] INFO: Logger initialized successfully
+[2025-09-30 04:33:10] INFO: Database opened successfully: data/automation.db
+[2025-09-30 04:33:10] INFO: Database tables created successfully
+[2025-09-30 04:33:10] INFO: Database initialized successfully
+[2025-09-30 04:33:10] INFO: System monitor module initialized
+[2025-09-30 04:33:10] INFO: File management module initialized
+[2025-09-30 04:33:10] INFO: Network monitor module initialized
+[2025-09-30 04:33:10] INFO: Security scanner module initialized
+[2025-09-30 04:33:10] INFO: Task scheduler module initialized
+[2025-09-30 04:33:10] INFO: Backup system module initialized
+[2025-09-30 04:33:10] INFO: System startup completed successfully
+[2025-09-30 04:34:27] INFO: Logger initialized successfully
+[2025-09-30 04:34:27] INFO: Database opened successfully: data/automation.db
+[2025-09-30 04:34:27] INFO: Database tables created successfully
+[2025-09-30 04:34:27] INFO: Database initialized successfully
+[2025-09-30 04:34:27] INFO: System monitor module initialized
+[2025-09-30 04:34:27] INFO: File management module initialized
+[2025-09-30 04:34:27] INFO: Network monitor module initialized
+[2025-09-30 04:34:27] INFO: Security scanner module initialized
+[2025-09-30 04:34:27] INFO: Task scheduler module initialized
+[2025-09-30 04:34:27] INFO: Backup system module initialized
+[2025-09-30 04:34:27] INFO: System startup completed successfully
+[2025-09-30 04:36:00] INFO: Logger initialized successfully
+[2025-09-30 04:36:00] INFO: Database opened successfully: data/automation.db
+[2025-09-30 04:36:00] INFO: Database tables created successfully
+[2025-09-30 04:36:00] INFO: Database initialized successfully
+[2025-09-30 04:36:00] INFO: System monitor module initialized
+[2025-09-30 04:36:00] INFO: File management module initialized
+[2025-09-30 04:36:00] INFO: Network monitor module initialized
+[2025-09-30 04:36:00] INFO: Security scanner module initialized
+[2025-09-30 04:36:00] INFO: Task scheduler module initialized
+[2025-09-30 04:36:00] INFO: Backup system module initialized
+[2025-09-30 04:36:00] INFO: System startup completed successfully
+[2025-09-30 04:36:02] INFO: Logger initialized successfully
+[2025-09-30 04:36:02] INFO: Database opened successfully: data/automation.db
+[2025-09-30 04:36:02] INFO: Database tables created successfully
+[2025-09-30 04:36:02] INFO: Database initialized successfully
+[2025-09-30 04:36:02] INFO: System monitor module initialized
+[2025-09-30 04:36:02] INFO: File management module initialized
+[2025-09-30 04:36:02] INFO: Network monitor module initialized
+[2025-09-30 04:36:02] INFO: Security scanner module initialized
+[2025-09-30 04:36:02] INFO: Task scheduler module initialized
+[2025-09-30 04:36:02] INFO: Backup system module initialized
+[2025-09-30 04:36:02] INFO: System startup completed successfully
+[2025-09-30 04:36:31] INFO: Logger initialized successfully
+[2025-09-30 04:36:31] INFO: Database opened successfully: data/automation.db
+[2025-09-30 04:36:31] INFO: Database tables created successfully
+[2025-09-30 04:36:31] INFO: Database initialized successfully
+[2025-09-30 04:36:31] INFO: System monitor module initialized
+[2025-09-30 04:36:31] INFO: File management module initialized
+[2025-09-30 04:36:31] INFO: Network monitor module initialized
+[2025-09-30 04:36:31] INFO: Security scanner module initialized
+[2025-09-30 04:36:31] INFO: Task scheduler module initialized
+[2025-09-30 04:36:31] INFO: Backup system module initialized
+[2025-09-30 04:36:31] INFO: System startup completed successfully
+[2025-09-30 04:36:37] INFO: Sistem metrikleri görüntülendi: 1 kayıt
+[2025-09-30 04:36:40] INFO: Database Viewer modülü kapatıldı
+[2025-09-30 04:36:41] INFO: Web server initialized on port 8080
+[2025-09-30 04:36:41] INFO: Web dashboard started on port 8080
+[2025-09-30 04:37:00] INFO: Güvenlik Tarama ve Kontrol başlatıldı
+[2025-09-30 04:37:04] INFO: Sistem güvenlik açığı tarama tamamlandı
+[2025-09-30 04:37:08] INFO: Güvenlik Tarama modülü kapatıldı
+[2025-09-30 04:37:13] INFO: Güvenlik taramaları görüntülendi: 1 kayıt

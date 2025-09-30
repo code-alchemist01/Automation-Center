@@ -59,6 +59,13 @@ Sistem Otomasyon Merkezi, Windows işletim sistemleri için geliştirilmiş kaps
 - PDF dışa aktarma desteği (wkhtmltopdf ile)
 - Özelleştirilebilir rapor şablonları
 
+### 🌐 Web Dashboard
+- Modern web tabanlı kontrol paneli (Port 8080)
+- Gerçek zamanlı sistem metrikleri görüntüleme
+- REST API desteği ile veri erişimi
+- Responsive tasarım ile mobil uyumluluk
+- CORS desteği ile güvenli erişim
+
 <img width="778" height="637" alt="Ekran görüntüsü 2025-09-29 235821" src="https://github.com/user-attachments/assets/9d9e6bf5-ef57-4f6e-a3b5-fc1b237334da" />
 <img width="860" height="771" alt="Ekran görüntüsü 2025-09-30 002226" src="https://github.com/user-attachments/assets/0a4a9fd6-9a23-4007-b50f-e17050a02599" />
 <img width="1023" height="809" alt="Ekran görüntüsü 2025-09-30 002150" src="https://github.com/user-attachments/assets/2f141e05-d8c1-4b61-a844-cf531b59fdcb" />
@@ -98,17 +105,28 @@ make
 ```
 
 ### Çalıştırma
+
+#### Önerilen Yöntem (UTF-8 Desteği ile):
 ```bash
-./automation_center.exe
+# Windows'ta Türkçe karakter desteği için
+.\baslat.bat
 ```
+
+#### Alternatif Yöntem:
+```bash
+# Doğrudan çalıştırma (UTF-8 sorunları yaşanabilir)
+.\automation_center.exe
+```
+
+**Not**: Windows'ta Türkçe karakterlerin düzgün görüntülenmesi için `baslat.bat` dosyasının kullanılması önerilir.
 
 ## 📋 Kullanım
 
 Uygulama başlatıldığında ana menü görüntülenir. Menüden istediğiniz modülü seçerek ilgili işlemleri gerçekleştirebilirsiniz.
 
 ### Ana Menü Seçenekleri:
-1. **Dosya Yönetimi** - Dosya işlemleri ve organizasyon
-2. **Sistem İzleme** - Performans izleme ve analiz
+1. **Sistem İzleme** - Performans izleme ve analiz
+2. **Dosya Yönetimi** - Dosya işlemleri ve organizasyon
 3. **Log Analizi** - Log dosyalarının incelenmesi
 4. **Yedekleme Sistemi** - Otomatik yedekleme işlemleri
 5. **Ağ İzleme** - Ağ bağlantısı testleri
@@ -116,6 +134,15 @@ Uygulama başlatıldığında ana menü görüntülenir. Menüden istediğiniz m
 7. **Görev Zamanlayıcı** - Otomatik görev yönetimi
 8. **Sistem Ayarları** - Konfigürasyon yönetimi
 9. **Raporlar** - Sistem raporlarını görüntüleme
+10. **Veritabanı Görüntüleyici** - SQLite veritabanı yönetimi
+11. **Web Dashboard** - Web tabanlı kontrol paneli (http://localhost:8080)
+
+### 🌐 Web Dashboard Kullanımı:
+Web dashboard'a erişmek için:
+1. Uygulamayı başlatın (`baslat.bat` ile)
+2. Ana menüden "11" seçeneğini seçin
+3. Web tarayıcınızda `http://localhost:8080` adresine gidin
+4. Modern web arayüzü ile sistem metriklerini görüntüleyin
 
 ## 📁 Proje Yapısı
 
@@ -160,6 +187,39 @@ PDF dışa aktarma için `wkhtmltopdf` aracının sisteminizde kurulu olması ge
 - **Derleme hataları**: MinGW-w64'ün doğru kurulduğundan emin olun
 - **İzin hataları**: Uygulamayı yönetici olarak çalıştırın
 - **Log dosyası oluşturulamıyor**: `logs/` klasörünün yazma izinlerini kontrol edin
+
+### UTF-8 Kodlama Sorunları (Türkçe Karakterler):
+Windows'ta Türkçe karakterlerin bozuk görünmesi durumunda:
+
+#### Çözüm 1 - Önerilen (Otomatik):
+```bash
+# baslat.bat dosyasını kullanın (otomatik UTF-8 ayarı)
+.\baslat.bat
+```
+
+#### Çözüm 2 - Manuel Terminal Ayarı:
+```bash
+# Terminal kodlamasını UTF-8'e ayarlayın
+chcp 65001
+# Ardından programı çalıştırın
+.\automation_center.exe
+```
+
+#### Çözüm 3 - PowerShell Ayarı:
+```powershell
+# PowerShell çıktı kodlamasını ayarlayın
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+chcp 65001
+.\automation_center.exe
+```
+
+#### Kalıcı Çözüm:
+`baslat.bat` dosyası bu sorunu otomatik olarak çözer ve her seferinde kullanılabilir.
+
+### Web Dashboard Sorunları:
+- **Port 8080 erişilemiyor**: Başka bir servisin portu kullanıp kullanmadığını kontrol edin
+- **"Welcome to Nginx" sayfası görünüyor**: Tarayıcı önbelleğini temizleyin veya farklı port deneyin
+- **API yanıt vermiyor**: `http://localhost:8080/api/system-metrics` adresini test edin
 
 ### Log Dosyaları:
 Uygulama çalışma sırasında `logs/automation.log` dosyasına detaylı bilgi kaydeder. Sorun yaşadığınızda bu dosyayı inceleyebilirsiniz.
