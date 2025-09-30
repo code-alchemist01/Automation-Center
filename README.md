@@ -242,7 +242,7 @@ Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosy
 
 Sorularınız veya önerileriniz için:
 - GitHub Issues üzerinden bildirim yapabilirsiniz
-- E-posta: [email@example.com]
+- E-posta: [ibrahimkutaysahin577@gmail.com]
 
 ## 🙏 Teşekkürler
 
